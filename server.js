@@ -4,6 +4,9 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+app.use(express.json())
+
+
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
