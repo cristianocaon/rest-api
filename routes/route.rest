@@ -6,6 +6,10 @@ POST http://localhost:3000/subscribers
 Content-Type: application/json
 
 {
-  "name": "Jack",
-  "subscribedChannel": "Daniels"
+  "name": "Another",
+  "subscribedChannel": "Random"
 }
+
+###
+
+GET http://localhost:3000/subscribers/5fb715de0d348d589c765127

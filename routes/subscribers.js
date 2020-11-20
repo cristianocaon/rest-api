@@ -9,12 +9,12 @@ router.get('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-})
+});
 
 // Get a specific subscriber
-router.get('/:id', (req, res) => {
-  
-})
+router.get('/:id', getSubscriber, (req, res) => {
+  res.json(res.subscriber)
+});
 
 // Create one subscriber
 router.post('/', (req, res) => {
@@ -25,20 +25,33 @@ router.post('/', (req, res) => {
 
   try {
     const newSubscriber = subscriber.save();
-    res.status(201).json(subscriber);
+    res.status(201).json(newSubscriber);
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
-})
+});
 
 // Update specific subscriber
 router.patch('/:id', (req, res) => {
   
-})
+});
 
 // Delete specific subscriber
 router.delete('/:id', (req, res) => {
   
-})
+});
+
+async function getSubscriber(req, res, next) {
+  try {
+    let subscriber = await Subscriber.findById(req.params.id);
+    if (subscriber == null) {
+      return res.status(404).json({ message: 'Subscriber not found.' });
+    }
+    res.subscriber = subscriber;
+    next();
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
 
 module.exports = router;
