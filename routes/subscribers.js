@@ -18,7 +18,17 @@ router.get('/:id', (req, res) => {
 
 // Create one subscriber
 router.post('/', (req, res) => {
-  
+  const subscriber = new Subscriber({
+    name: req.body.name,
+    subscribedChannel: req.body.subscribedChannel
+  });
+
+  try {
+    const newSubscriber = subscriber.save();
+    res.status(201).json(subscriber);
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
 // Update specific subscriber
