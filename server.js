@@ -1,25 +1,25 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const express = require('express')
-const mongoose = require('mongoose')
-const subscribersRouter = require('./routes/subscribers')
+const express = require('express');
+const mongoose = require('mongoose');
+const subscribersRouter = require('./routes/subscribers');
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-app.use('/subscribers', subscribersRouter)
+app.use(express.json());
+app.use('/subscribers', subscribersRouter);
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-})
+});
 
-const db = mongoose.connection
+const db = mongoose.connection;
 
-db.on('error', (error) => console.error(error))
+db.on('error', (error) => console.error(error));
 
 db.once('open', () => {
-  console.log('Connected to MongoDB!')
-})
+  console.log('Connected to MongoDB!');
+});
 
-app.listen(3000, () => console.log('Server running at http://localhost:3000'))
+app.listen(3000, () => console.log('Server running at http://localhost:3000'));

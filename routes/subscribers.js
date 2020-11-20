@@ -1,8 +1,14 @@
-const router = require('express').Router()
+const router = require('express').Router();
+const Subscriber = require('../models/subscriber');
 
 // Get all subscribers
-router.get('/', (req, res) => {
-  res.send('Hello World!')
+router.get('/', async (req, res) => {
+  try {
+  const subscribers = await Subscriber.find();
+  res.status(200).json(subscribers);    
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 })
 
 // Get a specific subscriber
@@ -25,4 +31,4 @@ router.delete('/:id', (req, res) => {
   
 })
 
-module.exports = router
+module.exports = router;
