@@ -2,7 +2,7 @@ GET http://localhost:3000/subscribers
 
 ###
 
-GET http://localhost:3000/subscribers/5fb715de0d348d589c765127
+GET http://localhost:3000/subscribers/5fb721d7985aec250ce4c9c4
 
 ###
 
@@ -17,3 +17,12 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/subscribers/5fb71f6a4692d35b38ca8994
+
+###
+
+PATCH http://localhost:3000/subscribers/5fb721d7985aec250ce4c9c4
+Content-Type: application/json
+
+{
+  "subscribedChannel": "favChannel"
+}

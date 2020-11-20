@@ -32,8 +32,20 @@ router.post('/', (req, res) => {
 });
 
 // Update specific subscriber
-router.patch('/:id', (req, res) => {
-  
+router.patch('/:id', getSubscriber, async (req, res) => {
+  if (req.body.name != null) {
+    res.subscriber.name = req.body.name;
+  }
+  if (req.body.subscribedChannel != null) {
+    res.subscriber.subscribedChannel = req.body.subscribedChannel;
+  }
+  try {
+    const updatedSubscriber = await res.subscriber.save();
+    res.json(updatedSubscriber);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+
 });
 
 // Delete specific subscriber
