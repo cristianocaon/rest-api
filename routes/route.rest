@@ -2,6 +2,10 @@ GET http://localhost:3000/subscribers
 
 ###
 
+GET http://localhost:3000/subscribers/5fb715de0d348d589c765127
+
+###
+
 POST http://localhost:3000/subscribers
 Content-Type: application/json
 
@@ -12,4 +16,4 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/subscribers/5fb715de0d348d589c765127
+DELETE http://localhost:3000/subscribers/5fb71f6a4692d35b38ca8994
